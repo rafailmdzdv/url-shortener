@@ -24,11 +24,13 @@ ruff = "^0.11.9"
 wemake-python-styleguide = "^1.1.0"
 eo-styleguide = "^0.0.1a16"
 pre-commit = "^4.2.0"
+flake8-aaa = "^0.17.0"
 
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.3.5"
 pytest-cov = "^6.1.1"
+pytest-asyncio = "^0.26.0"
 
 
 [tool.ruff]
@@ -65,6 +67,7 @@ quote-style = "single"
 
 [tool.pytest.ini_options]
 addopts = "--cov=src"
+asyncio_mode = "auto"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
