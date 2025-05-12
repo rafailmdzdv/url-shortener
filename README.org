@@ -1,4 +1,3 @@
 #+TITLE: URL Shortener (a.k.a Bitly)
 
 * Stack
-

@@ -8,7 +8,10 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.12,<4"
 dependencies = [
-    "fastapi[standart] (>=0.115.12,<0.116.0)"
+    "fastapi[standart] (>=0.115.12,<0.116.0)",
+    "sqlalchemy[asyncio] (>=2.0.40,<3.0.0)",
+    "alembic (>=1.15.2,<2.0.0)",
+    "aiopath (>=0.7.7,<0.8.0)"
 ]
 
 [tool.poetry]
@@ -20,12 +23,45 @@ mypy = "^1.15.0"
 ruff = "^0.11.9"
 wemake-python-styleguide = "^1.1.0"
 eo-styleguide = "^0.0.1a16"
+pre-commit = "^4.2.0"
 
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.3.5"
 pytest-cov = "^6.1.1"
 
+
+[tool.ruff]
+line-length = 120
+output-format = "concise"
+
+[tool.ruff.lint]
+select = ["ALL"]
+preview = true
+ignore = [
+  "CPY001",   # no copyright in module
+  "D100",     # no docstring in module
+  "D104",     # no docstring in package
+  "D203",     # ignore blank line before class
+  "D213",     # docstring summary in second line
+]
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.lint.per-file-ignores]
+"src/infrastructure/db/migrations/*" = [
+  "D103",
+  "D202",
+  "D205",
+  "ERA001",
+  "I001",
+  "INP001",
+  "Q000",
+]
+
+[tool.ruff.format]
+quote-style = "single"
 
 [tool.pytest.ini_options]
 addopts = "--cov=src"
